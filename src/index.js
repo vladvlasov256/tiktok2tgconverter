@@ -12,7 +12,7 @@ const bot = new TelegramBot(token, {
   }
 });
 
-bot.setWebHook(`${url}/bot${TELEGRAM_TOKEN}`);
+bot.setWebHook(`${url}/bot${token}`);
 
 bot.onText(tiktokUrlRegex, (msg, match) => {
   processUrl(match[0], msg.chat.id, bot, false, proxyHost);

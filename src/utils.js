@@ -1,6 +1,6 @@
 const https = require('https');
 
-exports.tiktokUrlRegex = /(?:https:\/\/)?(?:www\.)?(vm\.tiktok\.com\/\w+\/?|tiktok\.com\/@\w+\/video\/\d+?.*)/;
+exports.tiktokUrlRegex = /(?:https:\/\/)?(?:www\.)?(vm\.tiktok\.com\/\w+\/?|tiktok\.com\/@.+\/video\/\d+?.*)/;
 
 exports.httpsStream = function (url, headers, handler) {
     const [hostname, path] = splitUrl(url);

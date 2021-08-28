@@ -4,7 +4,15 @@ const {tiktokUrlRegex} = require('./utils');
 
 const proxyHost = process.env.PROXY_HOST;
 const token = process.env.TELEGRAM_TOKEN;
-const bot = new TelegramBot(token, {polling: true});
+const url = process.env.APP_URL;
+
+const bot = new TelegramBot(token, {
+  webHook: {
+    port: process.env.PORT
+  }
+});
+
+bot.setWebHook(`${url}/bot${TOKEN}`);
 
 bot.onText(tiktokUrlRegex, (msg, match) => {
   processUrl(match[0], msg.chat.id, bot, false, proxyHost);

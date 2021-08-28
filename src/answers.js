@@ -28,13 +28,24 @@ function processTextMessage(meta, queryUrl, chatId, bot) {
 function processInlineVideoMetadata(meta, queryUrl, queryId, bot, proxyHost) {
     if (meta.collector && meta.collector.length > 0)  {
         const { id, text, imageUrl, authorMeta } = meta.collector[0];
+        
+        let title = "";
+        let caption = null;
+        if (text) {
+            title = text;
+            caption = authorMeta.name;
+        } else {
+            title = authorMeta.name;
+        }
+
         bot.answerInlineQuery(queryId, [{
             "type": "video",
             "id": id,
             "video_url": `${proxyHost}/${queryUrl.replace(httpsPrefixRegex, "")}`,
             "mime_type": "video/mp4",
             "thumb_url": imageUrl,
-            "title": text ? text : authorMeta.name
+            title,
+            caption
         }]);
     }
 }

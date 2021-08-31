@@ -18,3 +18,24 @@ function splitUrl(url) {
     }
     return [];
 }
+
+exports.escape = function (str) {
+    return str.replace("_", "\\_")
+    .replace("*", "\\*")
+    .replace("[", "\\[")
+    .replace("]", "\\]")
+    .replace("(", "\\(")
+    .replace(")", "\\)")
+    .replace("~", "\\~")
+    .replace("`", "\\`")
+    .replace(">", "\\>")
+    .replace("#", "\\#")
+    .replace("+", "\\+")
+    .replace("-", "\\-")
+    .replace("=", "\\=")
+    .replace("|", "\\|")
+    .replace("{", "\\{")
+    .replace("}", "\\}")
+    .replace(".", "\\.")
+    .replace("!", "\\!")
+}

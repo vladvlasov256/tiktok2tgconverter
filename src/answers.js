@@ -1,5 +1,5 @@
 const scraper = require('tiktok-scraper');
-const {httpsStream} = require('./utils');
+const {httpsStream, escape} = require('./utils');
 
 const httpsPrefixRegex = /https?:\/\//i;
 
@@ -29,13 +29,13 @@ function processInlineVideoMetadata(meta, queryUrl, queryId, bot, proxyHost) {
     if (meta.collector && meta.collector.length > 0)  {
         const { id, text, imageUrl, authorMeta } = meta.collector[0];
         
-        let title = "";
-        let caption = null;
+        const title = `*${escape(authorMeta.name)}*`;
+        let description = null;
+        let caption = title;
         if (text) {
-            title = text;
-            caption = authorMeta.name;
-        } else {
-            title = authorMeta.name;
+            const escapedText = escape(text);
+            description = escapedText;
+            caption = `${caption}\n\n${escapedText}`;
         }
 
         bot.answerInlineQuery(queryId, [{
@@ -45,7 +45,9 @@ function processInlineVideoMetadata(meta, queryUrl, queryId, bot, proxyHost) {
             "mime_type": "video/mp4",
             "thumb_url": imageUrl,
             title,
-            caption
+            caption,
+            "parse_mode": "MarkdownV2",
+            description
         }]);
     }
 }

@@ -4,6 +4,7 @@ Telegram bot that downloads videos from TikTok
 ## Telegram UX
 
 Telegram does nothing with TikTok links. It forces your friends to open shared videos in a browser.
+
 ![TikTok url in a Telegram chat](chat.jpg)
 
 ## Bot UX

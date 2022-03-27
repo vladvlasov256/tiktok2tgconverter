@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "node-telegram-bot-api": "^0.54.0",
+    "tall": "^5.0.0",
     "tiktok-scraper": "^1.4.36"
   }
 }

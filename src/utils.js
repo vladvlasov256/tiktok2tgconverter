@@ -1,10 +1,10 @@
 const https = require('https');
 var { tall } = require('tall')
 
-const mobileLinkRegex = /(?:https:\/\/)?vm\.tiktok\.com\/\w+\/?/;
+const mobileLinkRegex = /(?:https:\/\/)?\w+\.tiktok\.com\/\w+\/?/;
 const unshorteningUserAgent = "curl/7.77.0";
 
-exports.tiktokUrlRegex = /(?:https:\/\/)?(?:www\.)?(vm\.tiktok\.com\/\w+\/?|tiktok\.com\/@.+\/video\/\d+?.*)/;
+exports.tiktokUrlRegex = /(?:https:\/\/)?(?:www\.)?(\w+\.tiktok\.com\/\w+\/?|tiktok\.com\/@.+\/video\/\d+?.*)/;
 
 exports.httpsStream = function (url, headers, handler) {
     const [hostname, path] = splitUrl(url);

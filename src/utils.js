@@ -1,8 +1,6 @@
 const https = require('https');
-var { tall } = require('tall')
 
 const mobileLinkRegex = /(?:https:\/\/)?\w+\.tiktok\.com\/\w+\/?/;
-const unshorteningUserAgent = "curl/7.77.0";
 
 exports.tiktokUrlRegex = /(?:https:\/\/)?(?:www\.)?(\w+\.tiktok\.com\/\w+\/?|tiktok\.com\/@.+\/video\/\d+?.*)/;
 
@@ -39,11 +37,13 @@ exports.escape = function(str) {
 exports.getUnshortenedUrl = function(url) {
     return new Promise(function(resolve, reject) {
         if (url.match(mobileLinkRegex)) {
-            tall(url, { 
-                headers: { 'User-Agent': unshorteningUserAgent }
+            https.get(url, (res) => {
+                if(res.statusCode === 301 || res.statusCode === 302) {
+                    resolve(res.headers.location);
+                } else {
+                    reject(new Error("No redirect data for mobile request"));
+                }
             })
-            .then(unshortenedUrl => resolve(unshortenedUrl))
-            .catch(error => reject(error))
         } else {
             resolve(url);
         }

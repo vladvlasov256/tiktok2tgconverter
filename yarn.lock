@@ -1810,11 +1810,6 @@ symbol-tree@^3.2.4:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-tall@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/tall/-/tall-5.0.0.tgz#d59a4f88f7e54f86a0e3ceca8e53b4a69e93e700"
-  integrity sha512-h2/zc5kpuQR7/LCHLfYaX0/5mZ64ECfXNoCqidDNln7cuA4WDIPFmi9Lpt3cR7HRHK5SCehlVW9Epn9exwQiqg==
-
 tar-stream@^2.1.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/tar-stream/-/tar-stream-2.2.0.tgz#acad84c284136b060dc3faa64474aa9aebd77287"
